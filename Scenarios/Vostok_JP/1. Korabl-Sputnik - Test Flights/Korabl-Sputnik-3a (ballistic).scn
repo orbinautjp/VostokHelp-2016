@@ -1,0 +1,80 @@
+BEGIN_DESC
+非公開の打ち上げ。第3段ロケットの故障により、タイガ地方のトゥーラ村の近くに緊急着陸した。
+
+
+2匹の犬たち（名前ははっきりしない。コメータ、シュートカ、アルファ、ジュールカ、ジェムチュジナヤ、スネジンカなど、資料によって異なる名前が挙げられている）は生還した。このときのユニークな救出作戦は、後年機密指定が解除されると広く知られるようになり、映画や本などでさかんに描かれることとなった。
+
+
+当初の予定では、フライトは1日（16周）で終わることになっていた。
+END_DESC
+
+BEGIN_ENVIRONMENT
+  System Spaceports\Sol
+  Date MJD 37290.3220486111
+  CONTEXT B-1
+  Help Vostok\VostokHelp,Korabl-Sputnik-3a (ballistic)
+END_ENVIRONMENT
+
+BEGIN_FOCUS
+  Ship Launchpad
+END_FOCUS
+
+BEGIN_CAMERA
+  TARGET Launchpad
+  MODE Extern
+  POS 0.68 113.91 -7.80
+  TRACKMODE TargetRelative
+  FOV 60.00
+END_CAMERA
+
+BEGIN_SHIPS
+Mission:Vostok\Mission
+  MISSION KS_TURA
+  TEST testLaunchKSTURA.kml 100 10
+END
+FairingFwd:Vostok\Generic
+  SUBTYPE FairingFwdVostok
+END
+FairingBack:Vostok\Generic
+  SUBTYPE FairingBackVostok
+END
+Bands:Vostok\Generic
+  SUBTYPE vBands
+END
+TDU:Vostok\Generic
+  SUBTYPE vTDU
+END
+Korabl-Sputnik:Vostok\Vostok
+  BANDS Bands
+  TDU TDU
+END
+BlockE:Vostok\BlockE
+  PAYLOAD Korabl-Sputnik
+  FAIRING1 FairingFwd
+  FAIRING2 FairingBack
+  FAILURES 1 3 0 0 0
+END
+BlockB:Vostok\BlockBD
+END
+BlockV:Vostok\BlockBD
+END
+BlockG:Vostok\BlockBD
+END
+BlockD:Vostok\BlockBD
+END
+BlockA:Vostok\BlockA
+  BLOCK_B BlockB 
+  BLOCK_V BlockV 
+  BLOCK_G BlockG 
+  BLOCK_D BlockD 
+  PAYLOAD BlockE
+  UPDATERS M_TIMER_1T_ME
+  TIMERS_1T_ME M_FAIL_ACT:275., 
+  FAILURES 1 2 0 0 0
+END
+Launchpad:Vostok\Launchpad
+ STATUS Landed Earth
+ LAUNCHER BlockA
+ RES_MODS ANIMCONTROLS acRingRotate:0.521085
+END
+END_SHIPS

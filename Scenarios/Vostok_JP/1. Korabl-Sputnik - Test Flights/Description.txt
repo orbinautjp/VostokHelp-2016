@@ -1,0 +1,7 @@
+BEGIN_HYPERDESC
+<body style="font-family: Meiryo;">
+<p>
+有人のボストーク宇宙船に先立って、無人のコラブリ・スプートニク試作機が7回打ち上げられた。完全な成功に終わったものは、そのうち3機だけだった。
+</p>
+</body>
+END_HYPERDESC

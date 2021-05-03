@@ -1,0 +1,73 @@
+BEGIN_DESC
+3機目のコラブリ・スプートニク。ムーシュカとプチョールカの2匹の犬が乗せられた。打ち上げとフライトは正常におこなわれた。再突入のとき、予定された軌道を外れてしまったため、宇宙船は自爆装置によって爆破された。犬たちは死んだ。
+
+
+フライトは1日（16周）で終了した。
+END_DESC
+
+BEGIN_ENVIRONMENT
+  System Spaceports\Sol
+  Date MJD 37269.3116319444
+  CONTEXT B-1
+  Help Vostok\VostokHelp,Korabl-Sputnik-3 (Mushka, Pchelka)
+END_ENVIRONMENT
+
+BEGIN_FOCUS
+  Ship Launchpad
+END_FOCUS
+
+BEGIN_CAMERA
+  TARGET Launchpad
+  MODE Extern
+  POS 0.68 113.91 -7.80
+  TRACKMODE TargetRelative
+  FOV 60.00
+END_CAMERA
+
+BEGIN_SHIPS
+Mission:Vostok\Mission
+  MISSION KS3
+  TEST testLaunchKS3.kml 100 10
+END
+FairingFwd:Vostok\Generic
+  SUBTYPE FairingFwdVostok
+END
+FairingBack:Vostok\Generic
+  SUBTYPE FairingBackVostok
+END
+Bands:Vostok\Generic
+  SUBTYPE vBands
+END
+TDU:Vostok\Generic
+  SUBTYPE vTDU
+END
+Korabl-Sputnik-3:Vostok\Vostok
+  BANDS Bands
+  TDU TDU
+END
+BlockE:Vostok\BlockE
+  PAYLOAD Korabl-Sputnik-3
+  FAIRING1 FairingFwd
+  FAIRING2 FairingBack
+END
+BlockB:Vostok\BlockBD
+END
+BlockV:Vostok\BlockBD
+END
+BlockG:Vostok\BlockBD
+END
+BlockD:Vostok\BlockBD
+END
+BlockA:Vostok\BlockA
+  BLOCK_B BlockB 
+  BLOCK_V BlockV 
+  BLOCK_G BlockG 
+  BLOCK_D BlockD 
+  PAYLOAD BlockE
+END
+Launchpad:Vostok\Launchpad
+ STATUS Landed Earth
+ LAUNCHER BlockA
+ RES_MODS ANIMCONTROLS acRingRotate:0.521085
+END
+END_SHIPS

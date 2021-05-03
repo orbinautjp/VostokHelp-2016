@@ -1,0 +1,113 @@
+BEGIN_DESC
+ワレンチナ・テレシコワは、ボストーク6号に搭乗し、宇宙飛行した最初の女性になった。このとき、ブィコフスキーのボストーク5号はすでに軌道上にいた。フライトは3日（48周）で終わった。
+
+
+2機の宇宙船は異なる軌道を飛び、接近したのはごく限られたタイミングだけだった。それぞれが別の時間に着陸した。
+END_DESC
+
+BEGIN_ENVIRONMENT
+  System Spaceports\Sol
+  Date MJD 38196.3915740741
+  CONTEXT B-1
+  Help Vostok\VostokHelp,Vostok-6 (Tereshkova)
+END_ENVIRONMENT
+
+BEGIN_FOCUS
+  Ship Tereshkova
+END_FOCUS
+
+BEGIN_CAMERA
+  TARGET Tereshkova
+  MODE Extern
+  POS 1.07 29.97 7.38
+  TRACKMODE TargetRelative
+  FOV 40.00
+END_CAMERA
+
+BEGIN_SHIPS
+Mission:Vostok\Mission
+  MISSION V5 Bands5,TDU5,Vostok-5,
+  MISSION V6 FairingFwd6,FairingBack6,Bands6,TDU6,Vostok-6,BlockE6,BlockB6,BlockV6,BlockG6,BlockD6,BlockA6,Launchpad,Gantry,Tereshkova,
+  TEST testLaunchV6.kml 100 10
+END
+FairingFwd6:Vostok\Generic
+  SUBTYPE FairingFwdVostok
+END
+FairingBack6:Vostok\Generic
+  SUBTYPE FairingBackVostok
+END
+Bands6:Vostok\Generic
+  SUBTYPE vBands
+END
+TDU6:Vostok\Generic
+  SUBTYPE vTDU
+END
+Vostok-6:Vostok\Vostok
+  BANDS Bands6
+  TDU TDU6
+END
+BlockE6:Vostok\BlockE
+  PAYLOAD Vostok-6
+  FAIRING1 FairingFwd6
+  FAIRING2 FairingBack6
+END
+BlockB6:Vostok\BlockBD
+END
+BlockV6:Vostok\BlockBD
+END
+BlockG6:Vostok\BlockBD
+END
+BlockD6:Vostok\BlockBD
+END
+BlockA6:Vostok\BlockA
+  BLOCK_B BlockB6
+  BLOCK_V BlockV6 
+  BLOCK_G BlockG6 
+  BLOCK_D BlockD6 
+  PAYLOAD BlockE6
+END
+Tereshkova:Vostok\vPilot
+END
+Gantry:Vostok\vGantry
+END
+Launchpad:Vostok\Launchpad
+ STATUS Landed Earth
+ LAUNCHER BlockA6
+ CRAWLER Gantry
+ PILOT_TBL Tereshkova
+END
+Bands5:Vostok\Generic
+  SUBTYPE vBands
+  UPDATERS M_ANIM, 
+  RES_MODS MESHES mSolar:Flags!0, 
+END
+TDU5:Vostok\Generic
+  SUBTYPE vTDU
+  UPDATERS M_ANIM, 
+  RES_MODS ANIMCONTROLS acAntTop:1 acAntFrm:1 acAntRear:1 acRad:1 
+END
+Vostok-5:Vostok\Vostok
+  STATUS Orbiting Earth
+  RPOS -675660.83 -5683256.82 3230233.79
+  RVEL -4614.921 3526.956 5194.851
+  AROT 36.48 30.88 -160.74
+  VROT -0.10 -0.05 -0.02
+  AFCMODE 7
+  PRPLEVEL 0:1.000000 1:1.000000 2:1.000000 3:1.000000
+  NAVFREQ 0 0
+  CAMERA cPilot
+  UPDATERS M_ANIM, M_VC, M_TIMER_P1S, V_INSTRUM, M_ME_WATCH, M_GROUND_WATCH, V_SUNEARTH, V_CTRL, V_ASORSU, 
+  TIMERS_P1S V_ENV_CLOSE, V_REGIONS, V_TEMPR, M_PLN_ENTER_EXIT, M_ATM_ENTER_EXIT, 
+  RES_MODS ANIMCONTROLS acMeshInits:1 acAnt:1 acNbMove:0.500000 acVzorBlinds:1 acTape:1 acGlobeRotO:0.669183 acGlobeRotK:0.073500 acGlobeRotE:0.454437 
+  RES_MODS MESHES mSeat:Flags!3, mChuteBag:Flags!3, mPilot:Flags!3, mFood:Flags!3, mNotebook:Flags!3, 
+  MESH_TEXTURE mPilot 1 txFByk
+  BANDS Bands5
+  TDU TDU5
+  MESHGROUPVIS mPilot:24:1 mVC:6:1 mMainHatch:5:1 mMainHatchScorched:5:1
+  Controls0 TmbSp3:1. TmbShutterVzor:1. TmbShutterRight:1. TmbShutterHatch:1. TmbUkv:1. TmbKv:1. HandleLight:0. TmbSpk:0. 
+  Controls1 KnobOCnt:0.25 
+  Clock 0.000000 34254.342355 250254.332355
+  OrbCounts 163007.366595 0.305761 0.000000 139.319031 31 81
+  Envir 19.909569 0.015522 0.033793 0.204310 0.745526 100.000000 1.140000 0.580000 1.020000 1.300000
+END
+END_SHIPS

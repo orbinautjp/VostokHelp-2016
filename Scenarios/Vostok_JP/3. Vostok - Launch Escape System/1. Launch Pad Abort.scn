@@ -1,0 +1,80 @@
+BEGIN_DESC
+エンジンから出火し、ロケットは発射台で爆発した。
+
+
+射出座席には2基の固体ロケットが装備されており、飛行士はこれを使って脱出する。
+END_DESC
+
+BEGIN_ENVIRONMENT
+  System Spaceports\Sol
+  Date MJD 37402.2539930556
+  CONTEXT B-1
+  Help Vostok\VostokHelp,1. Launch Pad Abort
+END_ENVIRONMENT
+
+BEGIN_FOCUS
+  Ship Launchpad
+END_FOCUS
+
+BEGIN_CAMERA
+  TARGET Launchpad
+  MODE Extern
+  POS 0.68 113.91 -7.80
+  TRACKMODE TargetRelative
+  FOV 60.00
+END_CAMERA
+
+BEGIN_SHIPS
+Mission:Vostok\Mission
+  MISSION V_LES
+  TEST testAbortLP.kml 200 1
+END
+FairingFwd:Vostok\Generic
+  SUBTYPE FairingFwdVostok
+END
+FairingBack:Vostok\Generic
+  SUBTYPE FairingBackVostok
+END
+Bands:Vostok\Generic
+  SUBTYPE vBands
+  RES_MODS MESHES mSolar:Flags!0, 
+END
+TDU:Vostok\Generic
+  SUBTYPE vTDU
+END
+Vostok:Vostok\Vostok
+  RES_MODS MESHES mPilot:Flags!3, 
+  BANDS Bands
+  TDU TDU
+END
+BlockE:Vostok\BlockE
+  PAYLOAD Vostok
+  FAIRING1 FairingFwd
+  FAIRING2 FairingBack
+END
+BlockB:Vostok\BlockBD
+END
+BlockV:Vostok\BlockBD
+END
+BlockG:Vostok\BlockBD
+END
+BlockD:Vostok\BlockBD
+  TIMERS_1T_ME M_FAIL_ACT:2.1, 
+  FAILURES 1 1 0 0 0
+END
+BlockA:Vostok\BlockA
+  BLOCK_B BlockB 
+  BLOCK_V BlockV 
+  BLOCK_G BlockG 
+  BLOCK_D BlockD 
+  PAYLOAD BlockE
+END
+Gantry:Vostok\vGantry
+END
+Launchpad:Vostok\Launchpad
+ STATUS Landed Earth
+  LAUNCHER BlockA   0.000000 -7.300000 0.000000   0.000000 1.000000 0.000000   0.220894 0.000000 -0.975298
+  CRAWLER Gantry   0.070000 -12.120000 -160.000000   0.000000 0.000000 -1.000000   1.000000 0.000000 0.000000
+  RES_MODS ANIMCONTROLS acGantryMove:0, acRingRotate:0.535449
+END
+END_SHIPS

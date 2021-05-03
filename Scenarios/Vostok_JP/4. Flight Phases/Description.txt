@@ -1,0 +1,7 @@
+BEGIN_HYPERDESC
+<body style="font-family: Meiryo;">
+<p>
+これらのシナリオでは、各ミッションを途中から開始することができる。
+</p>
+</body>
+END_HYPERDESC

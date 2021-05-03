@@ -1,0 +1,437 @@
+BEGIN_DESC
+このアドオンに収録されているすべての宇宙船が、2番発射台の記念広場近くに展示されており、博物館のようになっている。
+
+
+このシナリオを使って、メッシュ・テクスチャ・Configファイルの抜けがないか確認できる。
+
+もちろん、観光もできる。
+
+テンキーを使って、博物館の周囲を視点移動できるようになっている。
+END_DESC
+
+BEGIN_ENVIRONMENT
+  System Spaceports\Sol
+  Date MJD 73926.2524399732
+  Help Vostok\VostokHelp,Vostok Static Exhibition
+END_ENVIRONMENT
+
+BEGIN_FOCUS
+  Ship spaceports_Traveller
+END_FOCUS
+
+BEGIN_CAMERA
+  TARGET spaceports_Traveller
+  MODE Extern
+  POS 1.000000 -5.755944 -3.581972
+  TRACKMODE TargetRelative
+  FOV 60.00
+END_CAMERA
+
+BEGIN_SHIPS
+vostok_BlockE:Vostok\BlockE
+  STATUS Landed Earth
+  POS 63.3167637 45.9147866
+  HEADING 30.00
+  SUBTYPE Vostok
+  MTDP 0 -1.5 -10  2 -1.5 10  -2 -1.5 10
+END
+vostok_FairingFwdVostok1:Vostok\Generic
+  STATUS Landed Earth
+  POS 63.3166202 45.9144967
+  HEADING 210.00
+  SUBTYPE FairingFwdVostok
+END
+vostok_FairingBackVostok1:Vostok\Generic
+  STATUS Landed Earth
+  POS 63.3166661 45.9144785
+  HEADING 210.00
+  SUBTYPE FairingBackVostok
+END
+vostok_FairingFwdVostok:Vostok\Generic
+  STATUS Orbiting Earth
+  SUBTYPE FairingFwdVostok
+END
+vostok_FairingBackVostok:Vostok\Generic
+  STATUS Orbiting Earth
+  SUBTYPE FairingBackVostok
+END
+vostok_BlockE1:Vostok\BlockE
+  STATUS Landed Earth
+  SUBTYPE Vostok
+  FAIRING1 vostok_FairingFwdVostok
+  FAIRING2 vostok_FairingBackVostok
+END
+vostok_BlockB2:Vostok\BlockBD
+  STATUS Landed Earth
+  SUBTYPE Vostok
+END
+vostok_BlockV2:Vostok\BlockBD
+  STATUS Landed Earth
+  SUBTYPE Vostok
+END
+vostok_BlockG2:Vostok\BlockBD
+  STATUS Landed Earth
+  SUBTYPE Vostok
+END
+vostok_BlockD2:Vostok\BlockBD
+  STATUS Landed Earth
+  SUBTYPE Vostok
+END
+vostok_BlockA2-V:Vostok\BlockA
+  STATUS Landed Earth
+  POS 63.3165861 45.9146365
+  HEADING 0.00
+  STATUS Landed Earth
+  PAYLOAD vostok_BlockE1
+  BLOCK_B vostok_BlockB2
+  BLOCK_V vostok_BlockV2
+  BLOCK_G vostok_BlockG2
+  BLOCK_D vostok_BlockD2
+  SUBTYPE Vostok
+  MTDP 0 -2 -13  -2 0 -13  2 0 -13
+END
+vostok_HatchM:Vostok\Generic
+  STATUS Landed Earth
+  POS 63.3167172 45.9152165
+  HEADING 210.00
+  SUBTYPE vHatchMain
+  RES_MODS MESHES mScorched:Flags!0, 
+END
+vostok_HatchChute:Vostok\Generic
+  STATUS Landed Earth
+  POS 63.3167356 45.9152096
+  HEADING 30.00
+  SUBTYPE vHatchChute
+  RES_MODS MESHES mScorched:Flags!0, 
+END
+vostok_Seat:Vostok\Generic
+  STATUS Landed Earth
+  POS 63.3167546 45.9152007
+  HEADING 210.00
+  SUBTYPE vSeat
+END
+vostok_Dogs:Vostok\vDogs
+  STATUS Landed Earth
+  POS 63.3167869 45.9151868
+  HEADING 210.00
+END
+vostok_Dummy:Vostok\vPilot
+  STATUS Landed Earth
+  POS 63.3167711 45.9151932
+  HEADING 210.00
+  RES_MODS ANIMCONTROLS acHipsDown:0.700000 acKneesDown:0.230000 acTorsoUp:0.200000 acChMainMockupShift:1 acChMainMockupLand:1 acChMainMockupLaydown:1 
+  RES_MODS MESHES mChBag:Flags!0, 
+END
+vostok_DummySeat:Vostok\Generic
+  SUBTYPE vSeat
+END
+vostok_DummyInSeat:Vostok\vPilot
+  STATUS Landed Earth
+  POS 63.3168032 45.9151802
+  HEADING 210.00
+  RES_MODS ANIMCONTROLS acHipsDown:0 acKneesDown:1 acTorsoUp:1 
+  SEAT vostok_DummySeat
+  MTDP 0 1 -1.0  1 -1 -0.1  -1 -1 -0.1
+END
+vostok_VostokMockup:Vostok\Vostok
+  STATUS Landed Earth
+  POS 63.3168254 45.9151688
+  HEADING 30.00
+  RES_MODS ANIMCONTROLS acMeshInits:1 acAnt:1 acVzorBlinds:1 
+  RES_MODS MESHES mChuteHatch:Flags!0, mDog:Flags!3, mChuteSaBag:Flags!0, mMainHatch:Flags!0, 
+  MESHGROUPVIS mVC:6:1 mMainHatch:5:1 mMainHatchScorched:5:1
+END
+vostok_VostokManned:Vostok\Vostok
+  STATUS Landed Earth
+  POS 63.3168591 45.9151564
+  HEADING 30.00
+  RES_MODS ANIMCONTROLS acMeshInits:1 acAnt:1 acVzorBlinds:1 
+  RES_MODS MESHES mChuteHatch:Flags!0, mFood:Flags!3, mChuteSaBag:Flags!0, mMainHatch:Flags!0, 
+  MESHGROUPVIS mVC:6:1 mMainHatch:5:1 mMainHatchScorched:5:1
+END
+vostok_BandsVostokFullLate:Vostok\Generic
+  SUBTYPE vBands
+  RES_MODS MESHES mSolar:Flags!0, 
+END
+vostok_TDUVostokFullLate:Vostok\Generic
+  SUBTYPE vTDU
+  RES_MODS ANIMCONTROLS acAntTop:1 acAntFrm:1 acAntRear:1 acRad:1 
+END
+vostok_VostokFullLate:Vostok\Vostok
+  STATUS Landed Earth
+  POS 63.3166795 45.9151847
+  HEADING 210.00
+  RES_MODS ANIMCONTROLS acMeshInits:1 acAnt:1 acVzorBlinds:1 
+  RES_MODS MESHES mDog:Flags!3, mSeat:Flags!3, mChuteBag:Flags!3, mPilot:Flags!3, 
+  BANDS vostok_BandsVostokFullLate
+  TDU vostok_TDUVostokFullLate   0.938000 0.562000 0.945000   0.000000 0.000000 1.000000   1.000000 0.000000 0.000000
+  MESHGROUPVIS mVC:6:1 mMainHatch:5:1 mMainHatchScorched:5:1
+  MTDP 0 -1.3 1  -1 -1.3 -1  1 -1.3 -1
+END
+vostok_BandsVostokFullEarly:Vostok\Generic
+  SUBTYPE vBands
+END
+vostok_TDUVostokFullEarly:Vostok\Generic
+  SUBTYPE vTDU
+  RES_MODS ANIMCONTROLS acAntTop:1 acAntFrm:1 acAntRear:1 acRad:1 
+END
+vostok_VostokFullEarly:Vostok\Vostok
+  STATUS Landed Earth
+  POS 63.3166285 45.9151261
+  HEADING 30.00
+  RES_MODS ANIMCONTROLS acMeshInits:1 acAnt:1 acVzorBlinds:1 
+  RES_MODS MESHES mDogs:Flags!3, mChuteBag:Flags!3, 
+  BANDS vostok_BandsVostokFullEarly
+  TDU vostok_TDUVostokFullEarly   0.938000 0.562000 0.945000   0.000000 0.000000 1.000000   1.000000 0.000000 0.000000
+  MESHGROUPVIS mVC:6:1 mMainHatch:5:1 mMainHatchScorched:5:1
+  MTDP 0 -1.3 1  -1 -1.3 -1  1 -1.3 -1
+END
+vostok_TDU:Vostok\Generic
+  STATUS Landed Earth
+  POS 63.3165879 45.9150782
+  HEADING 210.00
+  SUBTYPE vTDU
+  RES_MODS ANIMCONTROLS acAntTop:1 acAntFrm:1 acAntRear:1 acRad:1 acCableM:1 
+  MTDP 0 -1.3 1  -1 -1.3 -1  1 -1.3 -1
+END
+vostok_BandsSolar:Vostok\Generic
+  STATUS Landed Earth
+  POS 63.3165777 45.9150534
+  HEADING 30.00
+  SUBTYPE vBands
+  RES_MODS ANIMCONTROLS acSegs:0.270000 acSolBase:0.805664 acSolPans:0.124377 
+END
+vostok_Bands:Vostok\Generic
+  STATUS Landed Earth
+  POS 63.3165550 45.9150170
+  HEADING 30.00
+  SUBTYPE vBands
+  RES_MODS ANIMCONTROLS acSegs:0.270000
+  RES_MODS MESHES mSolar:Flags!0, 
+END
+vostok_VostokWithHatches:Vostok\Vostok
+  STATUS Landed Earth
+  POS 63.3165365 45.9149952
+  HEADING 300.00
+  RES_MODS ANIMCONTROLS acMeshInits:1 acAnt:1 acVzorBlinds:1 
+  MESHGROUPVIS mVC:6:1 mMainHatch:5:1 mMainHatchScorched:5:1
+END
+vostok_Gantry:Vostok\vGantry
+  STATUS Landed Earth
+  POS 63.3166483 45.9152820
+  HEADING 30.00
+END
+vostok_KSLanded:Vostok\Vostok
+  STATUS Landed Earth
+  POS 63.3168662 45.9151280
+  HEADING 120.00
+  RES_MODS ANIMCONTROLS acMeshInits:1 acVzorBlinds:1
+  RES_MODS MESHES mAnts:Flags!0, mChuteHatch:Flags!0, mDog:Flags!3, mChuteSaBag:Flags!0, mMainHatch:Flags!0, mBody:Flags!0, mBodyScorched:Flags!3, 
+  MESHGROUPVIS mVC:6:1 mMainHatch:5:1 mMainHatchScorched:5:1
+END
+vostok_VostokLanded:Vostok\Vostok
+  STATUS Landed Earth
+  POS 63.3168472 45.9151050
+  HEADING 120.00
+  RES_MODS ANIMCONTROLS acMeshInits:1 acVzorBlinds:1
+  RES_MODS MESHES mAnts:Flags!0, mChuteHatch:Flags!0, mFood:Flags!3, mChuteSaBag:Flags!0, mMainHatch:Flags!0, mBody:Flags!0, mBodyScorched:Flags!3, 
+  MESHGROUPVIS mVC:6:1 mMainHatch:5:1 mMainHatchScorched:5:1
+END
+vostok_Vostok2Landed:Vostok\Vostok
+  STATUS Landed Earth
+  POS 63.3168275 45.9150820
+  HEADING 120.00
+  RES_MODS ANIMCONTROLS acMeshInits:1 acVzorBlinds:1
+  RES_MODS MESHES mAnts:Flags!0, mChuteHatch:Flags!0, mFood:Flags!3, mChuteSaBag:Flags!0, mMainHatch:Flags!0, mBody:Flags!0, mBodyScorched:Flags!3, mCableScorched:Flags!3, 
+  MESHGROUPVIS mVC:6:1 mMainHatch:5:1 mMainHatchScorched:5:1
+END
+vostok_HatchChuteBurnt:Vostok\Generic
+  STATUS Landed Earth
+  POS 63.3168436 45.9151209
+  HEADING 300.00
+  SUBTYPE vHatchChute
+  RES_MODS MESHES mClean:Flags!0, 
+  MTDP 0.2 0 1  0.2 -1 -1  0.2 1 -1
+END
+vostok_HatchMainBurnt:Vostok\Generic
+  STATUS Landed Earth
+  POS 63.3168251 45.9151021
+  HEADING 300.00
+  SUBTYPE vHatchMain
+  RES_MODS MESHES mClean:Flags!0, 
+  MTDP 1 -0.2 0   -1 -0.2 1  -1 -0.2 -1
+END
+vostok_DummyStand:Vostok\vPilot
+  STATUS Landed Earth
+  POS 63.3168296 45.9151121
+  HEADING 300.00
+  RES_MODS MESHES mChBag:Flags!0, 
+  RES_MODS TANKS Main:0 
+  MESHGROUPVIS mPilot:24:1
+  MTDP 0 -0.95 1  -1 -0.95 -1  1 -0.95 -1
+END
+vostok_V-TDU1:Vostok\Wreck
+  STATUS Landed Earth
+  POS 63.3167072 45.9152488
+  HEADING 30.00
+  MESH V_TDU1
+  NOSMOKE 
+  MTDP 0 -0.1 -1  2 -0.1 1  -2 -0.1 1
+END
+vostok_V-TDU2:Vostok\Wreck
+  STATUS Landed Earth
+  POS 63.3167012 45.9152514
+  HEADING 30.00
+  MESH V_TDU2
+  NOSMOKE 
+  MTDP 0 -0.2 -1  2 -0.2 1  -2 -0.2 1
+END
+vostok_V-TDU3:Vostok\Wreck
+  STATUS Landed Earth
+  POS 63.3167090 45.9152510
+  HEADING 60.00
+  MESH V_TDU3
+  NOSMOKE 
+  MTDP 0 -0.2 -1  2 -0.2 1  -2 -0.2 1
+END
+vostok_V-SA1:Vostok\Wreck
+  STATUS Landed Earth
+  POS 63.3167190 45.9152470
+  HEADING 60.00
+  MESH V_SA1
+  NOSMOKE 
+END
+vostok_V-SA2:Vostok\Wreck
+  STATUS Landed Earth
+  POS 63.3167190 45.9152570
+  HEADING 120.00
+  MESH V_SA2
+  NOSMOKE 
+END
+vostok_V-SA3:Vostok\Wreck
+  STATUS Landed Earth
+  POS 63.3166980 45.9152570
+  HEADING 150.00
+  MESH V_SA3
+  NOSMOKE 
+  MTDP 0 -0.45 -1  2 -0.45 1  -2 -0.45 1
+END
+vostok_V-SA4:Vostok\Wreck
+  STATUS Landed Earth
+  POS 63.3167290 45.9152570
+  HEADING 82.00
+  MESH V_SA4
+  NOSMOKE 
+  MTDP 0 -0.4 -1  2 -0.4 1  -2 -0.4 1
+END
+vostok_V-Tapes:Vostok\Wreck
+  STATUS Landed Earth
+  POS 63.3167100 45.9152420
+  HEADING 167.00
+  MESH V_Tapes
+  NOSMOKE 
+  MTDP 0 -0.1 -1  2 -0.1 1  -2 -0.1 1
+END
+vostok_Sphere:Vostok\Wreck
+  STATUS Landed Earth
+  POS 63.3167100 45.9152620
+  HEADING 82.00
+  MESH Sphere
+  NOSMOKE 
+  MTDP 0 -0.2 -1  2 -0.2 1  -2 -0.2 1
+END
+vostok_SphereCrushed:Vostok\Wreck
+  STATUS Landed Earth
+  POS 63.3167250 45.9152620
+  HEADING 82.00
+  MESH SphereCrushed
+  NOSMOKE 
+  MTDP 0 -0.2 -1  2 -0.2 1  -2 -0.2 1
+END
+vostok_Generic:Vostok\Wreck
+  STATUS Landed Earth
+  POS 63.3167500 45.9152920
+  HEADING 302.00
+  MESH Generic
+  NOSMOKE 
+  MTDP 0 -1 -1  2 -1 1  -2 -1 1
+END
+vostok_r7-B-Engine:Vostok\Wreck
+  STATUS Landed Earth
+  POS 63.3167150 45.9152700
+  HEADING 355.00
+  MESH r7_B_Engine
+  NOSMOKE 
+  MTDP 0 -0.2 -1  2 -0.2 1  -2 -0.2 1
+END
+vostok_r7-B-Top:Vostok\Wreck
+  STATUS Landed Earth
+  POS 63.3167330 45.9152780
+  HEADING 172.00
+  MESH r7_B_Top
+  NOSMOKE 
+  MTDP 0 -0.4 -1  2 -0.4 1  -2 -0.4 1
+END
+vostok_r7-A-EngineCover:Vostok\Wreck
+  STATUS Landed Earth
+  POS 63.3167290 45.9152670
+  HEADING 306.00
+  MESH r7_A-EngineCover
+  NOSMOKE 
+END
+vostok_r7-A-Bottom1:Vostok\Wreck
+  STATUS Landed Earth
+  POS 63.3168000 45.9153620
+  HEADING 39.00
+  MESH r7_A-Bottom1
+  NOSMOKE 
+  MTDP 0 -1.3 -1  2 -1.3 1  -2 -1.3 1
+END
+vostok_r7-A-Top:Vostok\Wreck
+  STATUS Landed Earth
+  POS 63.3167790 45.9153340
+  HEADING 101.00
+  MESH r7_A_Top
+  NOSMOKE 
+  MTDP 0 -1.3 -1  2 -1.3 1  -2 -1.3 1
+END
+vostok_r7-A-Cone:Vostok\Wreck
+  STATUS Landed Earth
+  POS 63.3167550 45.9153120
+  HEADING 81.00
+  MESH r7_A_Cone
+  NOSMOKE 
+  MTDP 0 -0.5 -1  2 -0.5 1  -2 -0.5 1
+END
+vostok_r7-A-Middle1:Vostok\Wreck
+  STATUS Landed Earth
+  POS 63.3168150 45.9153860
+  HEADING 14.00
+  MESH r7_A_Middle1
+  NOSMOKE 
+  MTDP 0 -0.5 -1  2 -0.5 1  -2 -0.5 1
+END
+vostok_r7-A-Middle2:Vostok\Wreck
+  STATUS Landed Earth
+  POS 63.3168450 45.9154160
+  HEADING 17.00
+  MESH r7_A_Middle2
+  NOSMOKE 
+  MTDP 0 -0.25 -1  2 -0.25 1  -2 -0.25 1
+END
+vostok_r7-A-Middle3:Vostok\Wreck
+  STATUS Landed Earth
+  POS 63.3168750 45.9154500
+  HEADING 211.00
+  MESH r7_A_Middle3
+  NOSMOKE 
+  MTDP 0 -0.25 -1  2 -0.25 1  -2 -0.25 1
+END
+spaceports_Traveller:spaceports\_Baser
+  STATUS Landed Earth
+  POS 63.3167337 45.9151997
+  HEADING 0.00
+  NODISPLAY
+  BASE Baikonur_2
+END
+END_SHIPS

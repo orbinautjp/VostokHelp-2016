@@ -1,0 +1,78 @@
+BEGIN_DESC
+ユーリ・ガガーリンは、宇宙を飛んだ最初の人間である。
+
+
+軌道を1周してフライトを終えた。
+END_DESC
+
+BEGIN_ENVIRONMENT
+  System Spaceports\Sol
+  Date MJD 37401.2506944444
+  CONTEXT B-1
+  Help Vostok\VostokHelp,Vostok (Gagarin)
+END_ENVIRONMENT
+
+BEGIN_FOCUS
+  Ship Gagarin
+END_FOCUS
+
+BEGIN_CAMERA
+  TARGET Gagarin
+  MODE Extern
+  POS 1.07 29.97 7.38
+  TRACKMODE TargetRelative
+  FOV 40.00
+END_CAMERA
+
+BEGIN_SHIPS
+Mission:Vostok\Mission
+  MISSION V
+  TEST testLaunchV.kml 100 10
+END
+FairingFwd:Vostok\Generic
+  SUBTYPE FairingFwdVostok
+END
+FairingBack:Vostok\Generic
+  SUBTYPE FairingBackVostok
+END
+Bands:Vostok\Generic
+  SUBTYPE vBands
+END
+TDU:Vostok\Generic
+  SUBTYPE vTDU
+END
+Vostok:Vostok\Vostok
+  BANDS Bands
+  TDU TDU
+END
+BlockE:Vostok\BlockE
+  PAYLOAD Vostok
+  FAIRING1 FairingFwd
+  FAIRING2 FairingBack
+END
+BlockB:Vostok\BlockBD
+END
+BlockV:Vostok\BlockBD
+END
+BlockG:Vostok\BlockBD
+END
+BlockD:Vostok\BlockBD
+END
+BlockA:Vostok\BlockA
+  BLOCK_B BlockB 
+  BLOCK_V BlockV 
+  BLOCK_G BlockG 
+  BLOCK_D BlockD 
+  PAYLOAD BlockE
+END
+Gagarin:Vostok\vPilot
+END
+Gantry:Vostok\vGantry
+END
+Launchpad:Vostok\Launchpad
+ STATUS Landed Earth
+ LAUNCHER BlockA
+ CRAWLER Gantry
+ PILOT_TBL Gagarin
+END
+END_SHIPS

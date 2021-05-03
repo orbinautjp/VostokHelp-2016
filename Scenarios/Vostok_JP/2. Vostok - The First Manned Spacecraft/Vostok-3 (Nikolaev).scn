@@ -1,0 +1,78 @@
+BEGIN_DESC
+アンドリアン・ニコラエフは、ボストーク3号に乗って宇宙へと向かった。フライトは4日（64周）で終わった。
+
+
+この打ち上げの翌日（この次のシナリオ）に、パヴェル・ポポヴィチが乗るボストーク4号が打ち上げられた。
+END_DESC
+
+BEGIN_ENVIRONMENT
+  System Spaceports\Sol
+  Date MJD 37887.3500000000
+  CONTEXT B-1
+  Help Vostok\VostokHelp,Vostok-3 (Nikolaev)
+END_ENVIRONMENT
+
+BEGIN_FOCUS
+  Ship Nikolaev
+END_FOCUS
+
+BEGIN_CAMERA
+  TARGET Nikolaev
+  MODE Extern
+  POS 1.07 29.97 7.38
+  TRACKMODE TargetRelative
+  FOV 40.00
+END_CAMERA
+
+BEGIN_SHIPS
+Mission:Vostok\Mission
+  MISSION V3
+  TEST testLaunchV3.kml 100 10
+END
+FairingFwd:Vostok\Generic
+  SUBTYPE FairingFwdVostok
+END
+FairingBack:Vostok\Generic
+  SUBTYPE FairingBackVostok
+END
+Bands:Vostok\Generic
+  SUBTYPE vBands
+END
+TDU:Vostok\Generic
+  SUBTYPE vTDU
+END
+Vostok-3:Vostok\Vostok
+  BANDS Bands
+  TDU TDU
+END
+BlockE:Vostok\BlockE
+  PAYLOAD Vostok-3
+  FAIRING1 FairingFwd
+  FAIRING2 FairingBack
+END
+BlockB:Vostok\BlockBD
+END
+BlockV:Vostok\BlockBD
+END
+BlockG:Vostok\BlockBD
+END
+BlockD:Vostok\BlockBD
+END
+BlockA:Vostok\BlockA
+  BLOCK_B BlockB 
+  BLOCK_V BlockV 
+  BLOCK_G BlockG 
+  BLOCK_D BlockD 
+  PAYLOAD BlockE
+END
+Nikolaev:Vostok\vPilot
+END
+Gantry:Vostok\vGantry
+END
+Launchpad:Vostok\Launchpad
+ STATUS Landed Earth
+ LAUNCHER BlockA
+ CRAWLER Gantry
+ PILOT_TBL Nikolaev
+END
+END_SHIPS

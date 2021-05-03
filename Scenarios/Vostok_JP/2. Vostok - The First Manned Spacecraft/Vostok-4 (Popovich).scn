@@ -1,0 +1,122 @@
+BEGIN_DESC
+パヴェル・ポポヴィチはボストーク4号に乗って宇宙へと向かった。このとき、ニコラエフの乗るボストーク3号が軌道上にいた。フライトは3日（48周）で終わった。
+
+
+2機の宇宙船は近接した軌道を飛び、ほとんど同時に着陸した。
+END_DESC
+
+BEGIN_ENVIRONMENT
+  System Spaceports\Sol
+  Date MJD 37888.3305567126
+  Context B-1
+  Help Vostok\VostokHelp,Vostok-4 (Popovich)
+END_ENVIRONMENT
+
+BEGIN_FOCUS
+  Ship Vostok-3
+END_FOCUS
+
+BEGIN_CAMERA
+  TARGET Vostok-3
+  MODE Extern
+  POS 5.78 169.74 86.97
+  TRACKMODE TargetRelative
+  FOV 40.00
+END_CAMERA
+
+BEGIN_SHIPS
+Mission:Vostok\Mission
+  UPDATERS M_TIMER_P1S, M_GROUND_WATCH, M_ATM_FLT, MN_WATCH_FOCUS, 
+  TIMERS_P1S MN_PLOT, M_PLN_ENTER_EXIT, M_ATM_ENTER_EXIT, 
+  MISSION V3 Bands3,TDU3,Vostok-3,
+  MISSION V4 FairingFwd4,FairingBack4,Bands4,TDU4,Vostok-4,BlockE4,BlockB4,BlockV4,BlockG4,BlockD4,BlockA4,Launchpad,Gantry,Popovich,
+  TEST testLaunchV4.kml 100 10
+END
+FairingFwd4:Vostok\Generic
+  SUBTYPE FairingFwdVostok
+END
+FairingBack4:Vostok\Generic
+  SUBTYPE FairingBackVostok
+END
+Bands4:Vostok\Generic
+  SUBTYPE vBands
+END
+TDU4:Vostok\Generic
+  SUBTYPE vTDU
+END
+Vostok-4:Vostok\Vostok
+  BANDS Bands4
+  TDU TDU4
+END
+BlockE4:Vostok\BlockE
+  SUBTYPE Vostok
+  PAYLOAD Vostok-4
+  FAIRING1 FairingFwd4
+  FAIRING2 FairingBack4
+END
+BlockB4:Vostok\BlockBD
+  SUBTYPE Vostok
+END
+BlockV4:Vostok\BlockBD
+  SUBTYPE Vostok
+END
+BlockG4:Vostok\BlockBD
+  SUBTYPE Vostok
+END
+BlockD4:Vostok\BlockBD
+  SUBTYPE Vostok
+END
+BlockA4:Vostok\BlockA
+  SUBTYPE Vostok
+  PAYLOAD BlockE4
+  BLOCK_B BlockB4
+  BLOCK_V BlockV4
+  BLOCK_G BlockG4
+  BLOCK_D BlockD4
+END
+Popovich:Vostok\vPilot
+END
+Gantry:Vostok\vGantry
+END
+Launchpad:Vostok\Launchpad
+ STATUS Landed Earth
+  LAUNCHER BlockA4
+  CRAWLER Gantry
+  PILOT_TBL Popovich
+END
+Bands3:Vostok\Generic
+  SUBTYPE vBands
+  UPDATERS M_ANIM, 
+  RES_MODS MESHES mSolar:Flags!0, 
+END
+TDU3:Vostok\Generic
+  SUBTYPE vTDU
+  UPDATERS M_ANIM, 
+  RES_MODS ANIMCONTROLS acAntTop:1 acAntFrm:1 acAntRear:1 
+END
+Vostok-3:Vostok\Vostok
+  STATUS Orbiting Earth
+  RPOS -3494063.41 -802252.01 5497218.01
+  RVEL -2008.620 7541.779 -188.968
+  AROT 62.73 45.12 16.71
+  VROT 0.10 -0.04 -0.05
+  AFCMODE 7
+  PRPLEVEL 0:1.000000 1:1.000000 2:1.000000 3:1.000000
+  NAVFREQ 0 0
+  CAMERA cPilot
+  UPDATERS M_ANIM, M_VC, M_TIMER_P1S, V_INSTRUM, M_ME_WATCH, M_GROUND_WATCH, V_SUNEARTH, V_CTRL, V_ASORSU, M_TIMER_1T, 
+  TIMERS_1T V_INIT:0.000000, 
+  TIMERS_P1S V_ENV_CLOSE, V_REGIONS, V_TEMPR, M_PLN_ENTER_EXIT, M_ATM_ENTER_EXIT, 
+  RES_MODS ANIMCONTROLS acMeshInits:1 acAnt:1 acNbMove:0.500000 acVzorBlinds:1 acTape:1 acGlobeRotO:0.197137 acGlobeRotK:0.073500 acGlobeRotE:0.357683 
+  RES_MODS MESHES mSeat:Flags!3, mChuteBag:Flags!3, mPilot:Flags!3, mFood:Flags!3, mNotebook:Flags!3, 
+  MESH_TEXTURE mPilot 1 txFNik
+  BANDS Bands3
+  TDU TDU3
+  MESHGROUPVIS mPilot:24:1 mVC:6:1 mMainHatch:5:1 mMainHatchScorched:5:1
+  Controls0 TmbSp3:1. TmbShutterVzor:1. TmbShutterRight:1. TmbShutterHatch:1. TmbUkv:1. TmbKv:1. HandleLight:0. BtnRecRec:1. 
+  Controls1 TmbSpk:0. KnobOCnt:0.25 
+  Clock 0.000000 41520.489915 171120.479915
+  OrbCounts 83873.075114 0.098314 0.000000 113.362942 16 64
+  Envir 20.022726 0.015016 0.031961 0.207058 0.745526 100.000000 1.140000 0.580000 1.020000 1.300000
+END
+END_SHIPS

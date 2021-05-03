@@ -1,0 +1,7 @@
+BEGIN_HYPERDESC
+<body style="font-family: Meiryo;">
+<p>
+ガガーリンの偉業に続いて、さらに5回の有人打ち上げが実行され、すべて成功した。打ち上げごとに、飛行時間は長くなり、ミッションの内容はより複雑になった。
+</p>
+</body>
+END_HYPERDESC

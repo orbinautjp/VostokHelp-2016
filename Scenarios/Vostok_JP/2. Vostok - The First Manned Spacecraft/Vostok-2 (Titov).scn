@@ -1,0 +1,141 @@
+BEGIN_DESC
+ゲルマン・チトフは、ボストーク2号で初めて丸一日（17周）のフライトに挑んだ。
+
+
+打ち上げの当日、ボストークの目の前の51番発射場では、昨日打ち上げに失敗したR-9 ICBMの残骸からまだ煙がくすぶっていた。
+END_DESC
+
+BEGIN_ENVIRONMENT
+  System Spaceports\Sol
+  Date MJD 37517.2458333333
+  CONTEXT B-1
+  Help Vostok\VostokHelp,Vostok-2 (Titov)
+END_ENVIRONMENT
+
+BEGIN_FOCUS
+  Ship Titov
+END_FOCUS
+
+BEGIN_CAMERA
+  TARGET Titov
+  MODE Extern
+  POS 1.07 29.97 7.38
+  TRACKMODE TargetRelative
+  FOV 40.00
+END_CAMERA
+
+BEGIN_SHIPS
+Mission:Vostok\Mission
+  MISSION V2
+  TEST testLaunchV2.kml 100 10
+END
+FairingFwd:Vostok\Generic
+  SUBTYPE FairingFwdVostok
+END
+FairingBack:Vostok\Generic
+  SUBTYPE FairingBackVostok
+END
+Bands:Vostok\Generic
+  SUBTYPE vBands
+END
+TDU:Vostok\Generic
+  SUBTYPE vTDU
+END
+Vostok-2:Vostok\Vostok
+  BANDS Bands
+  TDU TDU
+END
+BlockE:Vostok\BlockE
+  PAYLOAD Vostok-2
+  FAIRING1 FairingFwd
+  FAIRING2 FairingBack
+END
+BlockB:Vostok\BlockBD
+END
+BlockV:Vostok\BlockBD
+END
+BlockG:Vostok\BlockBD
+END
+BlockD:Vostok\BlockBD
+END
+BlockA:Vostok\BlockA
+  BLOCK_B BlockB 
+  BLOCK_V BlockV 
+  BLOCK_G BlockG 
+  BLOCK_D BlockD 
+  PAYLOAD BlockE
+END
+Titov:Vostok\vPilot
+END
+Gantry:Vostok\vGantry
+END
+Launchpad:Vostok\Launchpad
+ STATUS Landed Earth
+ LAUNCHER BlockA
+ CRAWLER Gantry
+ PILOT_TBL Titov
+END
+BlockA-Wreck-02:Vostok\Wreck
+  STATUS Landed Earth
+  POS 63.3405601 45.9237987
+  HEADING 83.82
+  AFCMODE 7
+  PRPLEVEL 0:1.000000
+  NAVFREQ 0 0
+  MESH r7_A_Middle2
+END
+BlockA-Wreck-03:Vostok\Wreck
+  STATUS Landed Earth
+  POS 63.3408636 45.9238823
+  HEADING 286.76
+  AFCMODE 7
+  PRPLEVEL 0:1.000000
+  NAVFREQ 0 0
+  MESH Generic
+END
+BlockA-Wreck-04:Vostok\Wreck
+  STATUS Landed Earth
+  POS 63.3346056 45.9233816
+  HEADING 85.53
+  AFCMODE 7
+  PRPLEVEL 0:1.000000
+  NAVFREQ 0 0
+  MESH r7_A-EngineCover
+END
+BlockA-Wreck-05:Vostok\Wreck
+  STATUS Landed Earth
+  POS 63.3410751 45.9238768
+  HEADING 176.47
+  AFCMODE 7
+  PRPLEVEL 0:1.000000
+  NAVFREQ 0 0
+  MESH r7_A-Bottom1
+END
+BlockB-Wreck-02:Vostok\Wreck
+  STATUS Landed Earth
+  POS 63.3410213 45.9238071
+  HEADING 63.15
+  AFCMODE 7
+  PRPLEVEL 0:1.000000
+  NAVFREQ 0 0
+  MESH r7_A_Middle2
+END
+BlockB-Wreck-03:Vostok\Wreck
+  STATUS Landed Earth
+  POS 63.3397356 45.9268436
+  HEADING 35.65
+  AFCMODE 7
+  PRPLEVEL 0:1.000000
+  NAVFREQ 0 0
+  MESH Generic
+END
+Warhead-Wreck:Vostok\Wreck
+  STATUS Landed Earth
+  POS 63.3409414 45.9238218
+  HEADING 121.03
+  AFCMODE 7
+  PRPLEVEL 0:1.000000
+  NAVFREQ 0 0
+  MESH r7_A_Cone
+END
+END_SHIPS

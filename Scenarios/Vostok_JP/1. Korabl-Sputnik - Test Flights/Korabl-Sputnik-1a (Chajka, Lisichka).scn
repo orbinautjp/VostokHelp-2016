@@ -1,0 +1,76 @@
+BEGIN_DESC
+失敗に終わった非公開の打ち上げ。打ち上げの早い段階でロケットが分解してしまった。2匹の犬たち、チャイカとリシチカが死んだ。
+
+
+当初の予定では、フライトは1日（16周）で終わることになっていた。
+END_DESC
+
+BEGIN_ENVIRONMENT
+  System Spaceports\Sol
+  Date MJD 37143.3956597222
+  CONTEXT B-1
+  Help Vostok\VostokHelp,Korabl-Sputnik-1a (Chajka, Lisichka)
+END_ENVIRONMENT
+
+BEGIN_FOCUS
+  Ship Launchpad
+END_FOCUS
+
+BEGIN_CAMERA
+  TARGET Launchpad
+  MODE Extern
+  POS 0.68 113.91 -7.80
+  TRACKMODE TargetRelative
+  FOV 60.00
+END_CAMERA
+
+BEGIN_SHIPS
+Mission:Vostok\Mission
+  MISSION KS_BAD
+  TEST testLaunchKSBAD.kml 100 10
+END
+FairingFwd:Vostok\Generic
+  SUBTYPE FairingFwdVostok
+END
+FairingBack:Vostok\Generic
+  SUBTYPE FairingBackVostok
+END
+Bands:Vostok\Generic
+  SUBTYPE vBands
+END
+TDU:Vostok\Generic
+  SUBTYPE vTDU
+END
+Korabl-Sputnik:Vostok\Vostok
+  BANDS Bands
+  TDU TDU
+END
+BlockE:Vostok\BlockE
+  PAYLOAD Korabl-Sputnik
+  FAIRING1 FairingFwd
+  FAIRING2 FairingBack
+END
+BlockB:Vostok\BlockBD
+END
+BlockV:Vostok\BlockBD
+  UPDATERS M_TIMER_1T_ME, 
+  TIMERS_1T_ME M_FAIL_ACT:18.950295, 
+  FAILURES 1 1 0 0 0
+END
+BlockG:Vostok\BlockBD
+END
+BlockD:Vostok\BlockBD
+END
+BlockA:Vostok\BlockA
+  BLOCK_B BlockB 
+  BLOCK_V BlockV 
+  BLOCK_G BlockG 
+  BLOCK_D BlockD 
+  PAYLOAD BlockE
+END
+Launchpad:Vostok\Launchpad
+ STATUS Landed Earth
+ LAUNCHER BlockA
+ RES_MODS ANIMCONTROLS acRingRotate:0.521085
+END
+END_SHIPS
